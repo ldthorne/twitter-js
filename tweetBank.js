@@ -1,6 +1,6 @@
 var _ = require('underscore');
 
-var data = [];
+var data = [{name:"nimit maru",text:"fullstack is awesome!"}];
 
 var add = function (name, text) {
   data.push({ name: name, text: text });
@@ -34,3 +34,5 @@ var getFakeTweet = function() {
 for(var i=0; i<10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
+
+console.log(data)

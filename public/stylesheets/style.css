@@ -28,6 +28,18 @@ body {
 #wrap > .container {
   padding: 60px 15px 0;
 }
+
+.submitPost{
+  text-align: center;
+}
+
+.imgs{
+  float: left;
+}
+.info{
+  margin-left: 7%;
+
+}
 .container .text-muted {
   margin: 20px 0;
 }

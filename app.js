@@ -6,6 +6,15 @@ var swig = require("swig");
 var routes = require('./routes/');
 var fs = require("fs")
 var mime = require("mime")
+// var socketio = require('socket.io');
+// var server = app.listen(3000);
+// var io = socketio.listen(server);
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 app.use(function(req, res, next) { //guy at gate
     console.log("Check yourself before you req yourself");
@@ -21,12 +30,12 @@ app.use(function(req, res, next) {
     res.send(fileBuffer)
   })
 })
-    
 
 
 app.use('/', routes);
 
 app.get("/")
+
 
 app.engine("html", require("swig").renderFile);
 
