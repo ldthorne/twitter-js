@@ -2,17 +2,27 @@ var express = require("express");
 var app = express();
 var port = 3000;
 var bodyParser = require("body-parser");
-var morgan = require("morgan");
+var swig = require("swig");
 
 
 
-app.use(function(req, res){ //guy at gate
-	console.log("hello");
+app.use(function(req, res, next){ //guy at gate
+	console.log("Check yourself before you req yourself");
+	next();
 });
 
+app.engine("html", require("swig").renderFile);
 
-app.get("/", function(req, res){  //airline
-	res.send("Check yourself before you req yourself");
+app.set("view engine", "html");
+
+app.set("views", __dirname + "/views/");
+
+swig.setDefaults({cache : false});
+
+var people = [{name: 'Full'}, {name: 'Stacker'}, {name: 'Son'}];
+app.get("/", function(req, res){
+	console.log("hi");
+	res.render( 'index', {title: 'Hall of Fame', people: people});
 });
 
 app.listen(port, function(){
